@@ -10,21 +10,17 @@ time = datetime.now()
 isValid = True 
 
 
-##########################################################
-########################## API ###########################
-
 # get list of gates
 @app.route('/gates', methods=['GET'])
 def get_gates():
 
     try:
         q1 = db.session.query(Gate)
-        total = str(q1.count())
-        
+        total = str(q1.count())        
         for i in q1:
             print(str(i.ID) + " " + i.Location + " " + i.Secret + " " + str(i.Activation))
 
-        return (total)
+        return (jsonify(q1))
     
     except:
         return app_errors.get['APP_GENERIC_ERROR']
@@ -139,9 +135,7 @@ def update_gate_activations():
         return app_errors.get['APP_GENERIC_ERROR']
 
 
-
-##########################################################
-########################## MAIN ##########################
+# main
 if __name__ == '__main__':
     
     app.run(debug=True)
