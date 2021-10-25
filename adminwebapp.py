@@ -4,7 +4,6 @@ from init import app, db, app_errors
 from gate_data import Gate
 
 
-
 @app.route("/api/awa")
 def index():
     return render_template("index.html")   
