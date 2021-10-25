@@ -76,8 +76,7 @@ def adicionaAtivacao(gate_id, gate_secret):
         print(app_errors.get('GATE_APP_GENERIC_ERROR'))
 
 
-##########################################################
-########################## MAIN ##########################
+
 if __name__ == '__main__':
 
     gate_id = sys.argv[1]
