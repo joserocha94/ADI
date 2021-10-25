@@ -7,9 +7,6 @@ from sqlalchemy import exists
 
 from init import db, ma
 
-##########################################################
-######################## Models ##########################
-
 class Gate(db.Model):
 
     __tablename__ = 'gate'
@@ -34,8 +31,6 @@ class GateSchema(ma.Schema):
 gate_schema = GateSchema()
 
 
-##########################################################
-########################## MAIN ##########################
 #if __name__ == '__main__':
 #    db.create_all()
 #    app.run(debug=True)
