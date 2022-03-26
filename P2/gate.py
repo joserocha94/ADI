@@ -4,6 +4,7 @@ from init import app, db, app_errors, my_user_fenix_id
 from gate_data import Gate
 from user_data import User, user_schema, UserEntryHistory, user_history_schema
 
+
 #home
 @app.route("/")
 def run():
@@ -12,6 +13,7 @@ def run():
     except:
         return app_errors.get['APP_GENERIC_ERROR']
 
+    
 #get list of gates
 @app.route('/gates', methods=['GET'])
 def get_gates():
@@ -26,6 +28,7 @@ def get_gates():
     except:
         return app_errors.get['APP_GENERIC_ERROR']
 
+    
 #validate qrcode
 @app.route('/qrcode', methods=['POST'])
 def validaQRcode():
@@ -42,6 +45,7 @@ def validaQRcode():
     except:
         return app_errors.get['APP_GENERIC_ERROR']
 
+    
 #add user entry
 @app.route('/new-user-entry-history', methods=['POST'])
 def addEntry(FenixID, iValid):
@@ -54,6 +58,7 @@ def addEntry(FenixID, iValid):
     except:
         return app_errors.get['APP_GENERIC_ERROR']   
 
+    
 #main
 if __name__ == '__main__':
     app.run(host="localhost", port = 5003, debug=True)
