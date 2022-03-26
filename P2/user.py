@@ -24,28 +24,23 @@ def generateQRcode():
         return app_errors.get['APP_GENERIC_ERROR']
 
 
-
 # add entrada
 @app.route('/user-entry-history')
 def add_entry():
-
     try:      
         new_entry = UserEntryHistory(my_user_fenix_id, 1, datetime.now())
         db.session.add(new_entry)
         db.session.commit()
-    
+        
         return user_history_schema.jsonify(new_entry)
-
     except:
         return app_errors.get['APP_GENERIC_ERROR']
 
 
-
-# get entrada
+#get entrada
 @app.route('/user-stats')
 def stats():
-
-    # passar userID
+    #passar userID
     try:
         q1 = db.session.query(UserEntryHistory)        
         string = ""
@@ -55,10 +50,8 @@ def stats():
             print(str(i.FenixID) + " " + str(i.GateID) + " " + str(i.Time))
 
         return string
-
     except:
         return app_errors.get['APP_GENERIC_ERROR']
-
 
 
 # begin login
@@ -70,7 +63,6 @@ def demo():
     session['oauth_state'] = state
 
     return redirect(authorization_url)
-
 
 
 # user has authorization
@@ -105,7 +97,6 @@ def callback():
     return redirect(url_for('.profile'))
 
 
-
 # validate user
 @app.route("/profile", methods=["GET"])
 def profile():
@@ -120,8 +111,6 @@ def profile():
 
     except:
         return app_errors.get['APP_GENERIC_ERROR']  
-
-
 
 
 # add user for testing
@@ -143,25 +132,19 @@ def addUser():
         return app_errors.get['APP_GENERIC_ERROR']
 
 
-
 # list all users for testing
 @app.route('/user-list', methods=['GET'])
 def getUsers():
 
     try:
-        q1 = db.session.query(User)
-
-        
+        q1 = db.session.query(User)    
         for i in q1:
             print(i.FenixID + " " + i.Token + " " + str(i.UserCode) + " " + str(i.iAdmin))
-
         return user_schema.jsonify(q1.all());
     
     except:
         return app_errors.get['APP_GENERIC_ERROR']     
-
-
-
+    
 
 if __name__ == '__main__':
 
