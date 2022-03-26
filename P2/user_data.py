@@ -28,18 +28,17 @@ class UserEntryHistory(db.Model):
         self.GateID = GateID
         self.Time = Time
         self.iValid = iValid
+        
 
 class UserHistorySchema(ma.Schema):
     class Meta:
         fields = ('FenixID', 'GateID', 'Time', 'iValid')
-
 user_history_schema = UserHistorySchema()
 
 
 class User(db.Model):
     
     __tablename__ = 'User'
-
     FenixID  = db.Column(db.String(10), primary_key=True)
     Token = db.Column(db.String(400), nullable=False)
     UserCode  = db.Column(db.Integer, autoincrement=True, nullable=False)
@@ -53,11 +52,11 @@ class User(db.Model):
         self.Token = Token
         self.UserCode = UserCode
         self.iAdmin = iAdmin
+        
 
 class UserSchema(ma.Schema):
     class Meta:
         fields = ('FenixID', 'Token', 'UserCode', 'iAdmin')
-
 user_schema = UserSchema()
 
 
